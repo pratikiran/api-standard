@@ -1,3 +1,3 @@
-module gitub.com/pratikiran/api-standard
+module github.com/pratikiran/api-standard
 
 go 1.24.1

@@ -3,7 +3,7 @@ package context
 import (
 	"context"
 
-	"gitub.com/pratikiran/api-standard/logger"
+	"github.com/pratikiran/api-standard/logger"
 )
 
 type customContextKey string
