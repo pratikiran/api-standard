@@ -1,6 +1,6 @@
 package logger
 
-type ILogger interface {
+type Logger interface {
 	SetLevel(level LogLevel)
 	Debug(message string, args ...any)
 	Info(message string, args ...any)

@@ -10,36 +10,25 @@ type customContextKey string
 
 const loggerKey customContextKey = "logger"
 
-type CustomContext struct {
+type Context struct {
 	context.Context
-	Logger logger.ILogger
+	Logger logger.Logger
 }
 
-func New(ctx context.Context) *CustomContext {
-	return &CustomContext{
+func New(ctx context.Context) *Context {
+	return &Context{
 		Context: ctx,
 		Logger:  logger.New(),
 	}
 }
 
-func NewWithLogger(ctx context.Context, log *logger.Logger) *CustomContext {
-	return &CustomContext{
+func NewWithLogger(ctx context.Context, log logger.Logger) *Context {
+	return &Context{
 		Context: ctx,
 		Logger:  log,
 	}
 }
 
-func (c *CustomContext) SetLogger(log *logger.Logger) {
+func (c *Context) SetLogger(log logger.Logger) {
 	c.Logger = log
-}
-
-func WithLogger(ctx context.Context, log *logger.Logger) context.Context {
-	return context.WithValue(ctx, loggerKey, log)
-}
-
-func LoggerFromContext(ctx context.Context) *logger.Logger {
-	if log, ok := ctx.Value(loggerKey).(*logger.Logger); ok {
-		return log
-	}
-	return logger.New()
 }
